@@ -5,6 +5,7 @@ public class Edit_Video_dto {
 	private Integer lessonId;
 	private Integer id;
 	private String url;
+	private String url2;
 	
 	public Edit_Video_dto() {
 		super();
@@ -28,4 +29,11 @@ public class Edit_Video_dto {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getUrl2() {
+		return url2;
+	}
+	public void setUrl2(String url2) {
+		this.url2 = url2;
+	}
+	
 }

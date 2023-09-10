@@ -7,6 +7,7 @@ import com.exam.portal.exam.portal.entities.Mcq;
 import com.exam.portal.exam.portal.entities.Reading;
 import com.exam.portal.exam.portal.entities.Video;
 import com.exam.portal.exam.portal.entities.Vocabulary;
+import com.exam.portal.exam.portal.entities.VocabularyEtoJ;
 
 public class Lesson_Response_dto {
 	
@@ -21,6 +22,8 @@ private Integer id;
 	private List<Reading> reading;
 	
 	private List<Vocabulary> vocabulary;
+	
+	private List<VocabularyEtoJ> vocabularyetoj;
 	
 	private Date createdDate;
 	
@@ -77,6 +80,16 @@ private Integer id;
 
 	public void setVocabulary(List<Vocabulary> vocabulary) {
 		this.vocabulary = vocabulary;
+	}
+	
+	
+
+	public List<VocabularyEtoJ> getVocabularyetoj() {
+		return vocabularyetoj;
+	}
+
+	public void setVocabularyetoj(List<VocabularyEtoJ> vocabularyetoj) {
+		this.vocabularyetoj = vocabularyetoj;
 	}
 
 	public Date getCreatedDate() {

@@ -44,6 +44,10 @@ public class Lesson {
 	 @JsonManagedReference
 	private List<Vocabulary> vocabulary;
 	
+	@OneToMany(mappedBy = "lesson")
+	 @JsonManagedReference
+	private List<VocabularyEtoJ> vocabularyetoj;
+	
 	@Temporal(TemporalType.DATE)
 	private Date createdDate;
 	
@@ -118,6 +122,15 @@ public class Lesson {
 
 	public void setVocabulary(List<Vocabulary> vocabulary) {
 		this.vocabulary = vocabulary;
+	}
+	
+
+	public List<VocabularyEtoJ> getVocabularyetoj() {
+		return vocabularyetoj;
+	}
+
+	public void setVocabularyetoj(List<VocabularyEtoJ> vocabularyetoj) {
+		this.vocabularyetoj = vocabularyetoj;
 	}
 
 	public Date getCreatedDate() {

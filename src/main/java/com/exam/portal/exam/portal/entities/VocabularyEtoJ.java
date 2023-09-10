@@ -1,8 +1,6 @@
 package com.exam.portal.exam.portal.entities;
 
-  
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,34 +15,30 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
   
-  @Entity  
-  @Table(name="reading") 
-  public class Reading {
+  @Entity
+  @Table(name="vocabularyEtoJ") 
+  public class VocabularyEtoJ {
   
   @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  @Column(name="id") private Integer id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="id") 
+  private Integer id;
   
-  @Column(name="heading") 
-  private String heading;
+  @Column(name="hiragana_character") 
+  private String hiragana_character;
   
-  @Column(name="subheading") 
-  private String subheading;
+  @Column(name="english_character") 
+  private String english_character;
   
-  @Column(name="imageUrl") 
-  private String imageUrl;
+  @Column(name="kanji_character") 
+  private String kanji_character;
   
-  @Column(name="content") 
-  private String content;
+  @Column(name="romaji_character") 
+  private String romaji_character;
   
-  @OneToMany(mappedBy = "reading")
-  @JsonManagedReference
-  private List<Grammar> grammar;
-  
-  @ManyToOne
+  @ManyToOne 
   @JoinColumn(name = "lesson_id")
   @JsonBackReference
   private Lesson lesson;
@@ -55,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
   @Temporal(TemporalType.DATE) 
   private Date updatedDate;
 
-public Reading() {
+public VocabularyEtoJ() {
 	super();
 	// TODO Auto-generated constructor stub
 }
@@ -68,36 +62,36 @@ public void setId(Integer id) {
 	this.id = id;
 }
 
-public String getHeading() {
-	return heading;
+public String getHiragana_character() {
+	return hiragana_character;
 }
 
-public void setHeading(String heading) {
-	this.heading = heading;
+public void setHiragana_character(String hiragana_character) {
+	this.hiragana_character = hiragana_character;
 }
 
-public String getSubheading() {
-	return subheading;
+public String getEnglish_character() {
+	return english_character;
 }
 
-public void setSubheading(String subheading) {
-	this.subheading = subheading;
+public void setEnglish_character(String english_character) {
+	this.english_character = english_character;
 }
 
-public String getImageUrl() {
-	return imageUrl;
+public String getKanji_character() {
+	return kanji_character;
 }
 
-public void setImageUrl(String imageUrl) {
-	this.imageUrl = imageUrl;
+public void setKanji_character(String kanji_character) {
+	this.kanji_character = kanji_character;
 }
 
-public String getContent() {
-	return content;
+public String getRomaji_character() {
+	return romaji_character;
 }
 
-public void setContent(String content) {
-	this.content = content;
+public void setRomaji_character(String romaji_character) {
+	this.romaji_character = romaji_character;
 }
 
 public Lesson getLesson() {
@@ -124,16 +118,7 @@ public void setUpdatedDate(Date updatedDate) {
 	this.updatedDate = updatedDate;
 }
 
-public List<Grammar> getGrammar() {
-	return grammar;
-}
 
-public void setGrammar(List<Grammar> grammar) {
-	this.grammar = grammar;
-}
 
- 
-  
-  
   }
  

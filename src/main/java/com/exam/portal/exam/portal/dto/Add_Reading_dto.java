@@ -1,17 +1,26 @@
 package com.exam.portal.exam.portal.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
+
+import com.exam.portal.exam.portal.entities.Grammar;
+
+
 
 public class Add_Reading_dto {
 	
 	private Integer lessonId;
 	  
-	private String title;
+	private String heading;
+	
+	private String subheading;
 	  
 	private String imageUrl;
 	  
 	private String content;
 	  
+	
 	
 	
 	public Add_Reading_dto() {
@@ -36,15 +45,33 @@ public class Add_Reading_dto {
 
 
 
-	public String getTitle() {
-		return title;
+
+
+	public String getHeading() {
+		return heading;
 	}
 
 
 
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setHeading(String heading) {
+		this.heading = heading;
 	}
+
+
+
+
+	public String getSubheading() {
+		return subheading;
+	}
+
+
+
+
+	public void setSubheading(String subheading) {
+		this.subheading = subheading;
+	}
+
 
 
 
@@ -69,7 +96,6 @@ public class Add_Reading_dto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 
 	
 }

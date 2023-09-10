@@ -40,7 +40,10 @@ public class Reading_Controller {
 		Lesson findLesson = lessonService.findLesson(addreadingdto.getLessonId());
 		if(findLesson!=null) {
 			reading.setLesson(findLesson);
-			BeanUtils.copyProperties(addreadingdto, reading);
+			reading.setContent(addreadingdto.getContent());
+			reading.setHeading(addreadingdto.getHeading());
+			reading.setImageUrl(addreadingdto.getImageUrl());
+			reading.setSubheading(addreadingdto.getSubheading());
 			reading_service.addReading(reading);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Reading section Added Successfully");
 		}
