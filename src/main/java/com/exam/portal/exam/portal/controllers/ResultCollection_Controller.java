@@ -1,76 +1,79 @@
-//package com.exam.portal.exam.portal.controllers;
-//
-//import org.springframework.beans.BeanUtils;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.DeleteMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//import com.exam.portal.exam.portal.dto.Add_Mcq_dto;
-//import com.exam.portal.exam.portal.dto.Edit_Mcq_dto;
-//import com.exam.portal.exam.portal.entities.Lesson;
-//import com.exam.portal.exam.portal.entities.Mcq;
-//import com.exam.portal.exam.portal.services.Lesson_Service;
-//import com.exam.portal.exam.portal.services.Mcq_Service;
-//
-//@RestController
-//@RequestMapping("/mcq")
-//public class ResultCollection_Controller {
-//	
-//	@Autowired
-//	Lesson_Service lessonService;
-//	
-//	@Autowired
-//	private Mcq_Service mcq_Service;
-//	
-//	@PostMapping("/mcq")
-//	public ResponseEntity<String> addMcq(@RequestBody Add_Mcq_dto addMcqdto){
-//		
-//		Mcq mcq = new Mcq();
-//		Lesson findLesson = lessonService.findLesson(addMcqdto.getLesson_id());
-//		if(findLesson!=null) {
-//			mcq.setLesson(findLesson);
-//			BeanUtils.copyProperties(addMcqdto, mcq);
-//			mcq_Service.add_mcq(mcq);
-//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Mcq Added Successfully");
-//		}
-//		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Lesson Not Found");
-//		
-//		
-//	}
-//	
-//	@PutMapping("/mcq")
-//	public ResponseEntity<String> editMcq(@RequestBody Edit_Mcq_dto editMcqdto){
-//		
-//		Mcq mcq = new Mcq();
-//		Lesson findLesson = lessonService.findLesson(editMcqdto.getLesson_id());
-//		if(findLesson!=null) {
-//			mcq.setLesson(findLesson);
-//			BeanUtils.copyProperties(editMcqdto, mcq);
-//			mcq_Service.add_mcq(mcq);
-//			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Mcq details edited Successfully");
-//		}
-//		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Lesson Not Found");
-//		
-//		
-//	}
-//	
-//	@DeleteMapping("/mcq/{id}")
-//	public ResponseEntity<String> delteMcq(@PathVariable Integer id){
-//		
-//	    Mcq mcq = mcq_Service.findMcqById(id);
-//		String mcqString = mcq_Service.deleteMcq(mcq);
-//		return ResponseEntity.status(HttpStatus.OK).body(mcqString);
-//		
-//		
-//	}
-//	
-//
-//
-//}
+package com.exam.portal.exam.portal.controllers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.exam.portal.exam.portal.dto.Lesson_Response_dto;
+import com.exam.portal.exam.portal.dto.Response_dto;
+import com.exam.portal.exam.portal.dto.ResultCollection_Response_dto;
+import com.exam.portal.exam.portal.dto.ResultResponse_dto;
+import com.exam.portal.exam.portal.dto.Result_dto;
+import com.exam.portal.exam.portal.entities.Lesson;
+import com.exam.portal.exam.portal.entities.Result;
+import com.exam.portal.exam.portal.entities.ResultCollection;
+import com.exam.portal.exam.portal.services.ResultCollection_Service;
+
+@RestController
+@RequestMapping("/resultCollection")
+@CrossOrigin(origins = "http://localhost:4200")
+public class ResultCollection_Controller {
+	
+	@Autowired
+	ResultCollection_Service resultCollection_Service;
+	
+
+	@GetMapping("/result/{id}")
+	public ResponseEntity<ResultResponse_dto> showResultCollections(@PathVariable Integer id){
+		
+		List<ResultCollection> showAll = resultCollection_Service.getAllResultCollectionByLessonId(id);
+		List<ResultCollection_Response_dto> resultCollection_response_dto = new ArrayList<ResultCollection_Response_dto>();
+		ResultResponse_dto response = new ResultResponse_dto();
+		
+		for(ResultCollection list: showAll) {
+			ResultCollection_Response_dto lrd = new ResultCollection_Response_dto();
+		BeanUtils.copyProperties(list, lrd);
+		resultCollection_response_dto.add(lrd);
+		Map map = new HashMap();
+		map.put("content", resultCollection_response_dto);
+		response.setMessage("Result Collection Retreived");
+		response.setStatus(HttpStatus.ACCEPTED);
+		response.setResultResponse(map);
+		response.setTimestamp(System.currentTimeMillis());
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+	@GetMapping("/resultdetails/{id}")
+	public ResponseEntity<ResultResponse_dto> showResultByResultCollectionid(@PathVariable Integer id){
+		
+		List<Result> showAll = resultCollection_Service.getAllResultByResultCollectionId(id);
+		List<Result_dto> result_dtoList = new ArrayList<Result_dto>();
+		ResultResponse_dto response = new ResultResponse_dto();
+		
+		for(Result list: showAll) {
+			Result_dto lrd = new Result_dto();
+		BeanUtils.copyProperties(list, lrd);
+		result_dtoList.add(lrd);
+		Map map = new HashMap();
+		map.put("content", result_dtoList);
+		response.setMessage("Result Collection Retreived");
+		response.setStatus(HttpStatus.ACCEPTED);
+		response.setResultResponse(map);
+		response.setTimestamp(System.currentTimeMillis());
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+}

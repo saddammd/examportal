@@ -27,21 +27,25 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
   
   
   @OneToMany(mappedBy = "resultcollection")
+  
 	@JsonManagedReference
 	private List<Result> result;
   
-  @Temporal(TemporalType.DATE)
-	private Date createdDate;
+  	@Column(name="lesson_id")
+  	private Integer lessonId;
+  
+  	@Column(name="createdDate")
+	private String createdDate;
 	
 	@Temporal(TemporalType.DATE)
 	private Date updatedDate;
 
-
-public Date getCreatedDate() {
+	
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -68,6 +72,16 @@ public List<Result> getResult() {
 public void setResult(List<Result> result) {
 	this.result = result;
 }
+
+public Integer getLessonId() {
+	return lessonId;
+}
+
+public void setLessonId(Integer lessonId) {
+	this.lessonId = lessonId;
+}
+
+
  
   
   }

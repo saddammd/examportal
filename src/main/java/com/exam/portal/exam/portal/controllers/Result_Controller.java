@@ -59,6 +59,7 @@ public class Result_Controller {
 			result.setSubmittedAnswer(r.getSubmittedAnswer());
 			result.setQuestionId(r.getQuestionId()+1);
 			result.setResultcollection(rc);
+			rc.setLessonId(Integer.valueOf(result.getLessonId()));
 			resultList.add(result);
 		}
 		

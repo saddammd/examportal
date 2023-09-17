@@ -10,4 +10,6 @@ public interface Result_Repository extends JpaRepository<Result, Integer>{
 	
 	public List<Result> findAllByLessonIdAndResultcollectionId(Integer lessonid, Integer resultcollectionid);
 
+	public List<Result> findAllByResultcollectionId(Integer id);
+
 }

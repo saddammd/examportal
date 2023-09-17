@@ -24,7 +24,7 @@ import com.exam.portal.exam.portal.dto.Lesson_Response_dto;
 import com.exam.portal.exam.portal.dto.Response_dto;
 import com.exam.portal.exam.portal.entities.Lesson;
 import com.exam.portal.exam.portal.services.Lesson_Service;
-@CrossOrigin(origins = "http://localhost:9200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/examportal")
 public class Lesson_Controller {

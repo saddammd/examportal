@@ -48,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 	
 	@Column(name = "question_id")
 	private Integer questionId;
+	
   
   @Column(name = "submittedAnswer")
   private String submittedAnswer;
@@ -144,7 +145,7 @@ public Integer getQuestionId() {
 
 public void setQuestionId(Integer questionId) {
 	this.questionId = questionId;
-}  
+}
 
 
 

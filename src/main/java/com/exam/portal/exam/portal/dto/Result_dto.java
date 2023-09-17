@@ -19,7 +19,7 @@ public class Result_dto {
 	private String answer;
 
 	private String lessonId;
-  
+	 
 	private String submittedAnswer;
   
 
@@ -95,6 +95,7 @@ public class Result_dto {
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
+
 
 	
 	
