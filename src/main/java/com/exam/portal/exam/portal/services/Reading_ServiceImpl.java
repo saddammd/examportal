@@ -19,9 +19,9 @@ public class Reading_ServiceImpl implements Reading_Service {
 	}
 
 	@Override
-	public Reading findReading(Integer id) {
+	public Reading findReadingByLessonId(Integer id) {
 		
-		return reading_repository.findReadingById(id);
+		return reading_repository.findReadingByLessonId(id);
 	}
 
 	@Override

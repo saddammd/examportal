@@ -1,5 +1,7 @@
 package com.exam.portal.exam.portal.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,9 @@ public class Mcq_ServiceImpl implements Mcq_Service {
 	}
 
 	@Override
-	public Mcq findMcqById(Integer id) {
+	public List<Mcq> findMcqByLessonId(Integer id) {
 		
-		return mcq_repository.findMcqById(id);
+		return mcq_repository.findMcqByLessonId(id);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ import com.exam.portal.exam.portal.services.Result_Service;
 
 @RestController
 @RequestMapping("/result")
-@CrossOrigin(origins = "http://localhost:9200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class Result_Controller {
 	
 	@Autowired

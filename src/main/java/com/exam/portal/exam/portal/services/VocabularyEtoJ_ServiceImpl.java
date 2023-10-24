@@ -1,5 +1,7 @@
 package com.exam.portal.exam.portal.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +23,9 @@ public class VocabularyEtoJ_ServiceImpl implements VocabularyEtoJ_Service {
 	}
 
 	@Override
-	public VocabularyEtoJ findVocabulary(Integer id) {
+	public List<VocabularyEtoJ> findVocabularyEtoJByLessonId(Integer id) {
 		
-		return vocabularyEtoJ_repository.findVocabularById(id);
+		return vocabularyEtoJ_repository.findVocabularEtoJByLessonId(id);
 	}
 
 	@Override

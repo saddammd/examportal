@@ -10,7 +10,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @SpringBootApplication
-public class JapaneseLanguagePortalApplication {
+public class JapaneseLanguagePortalApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JapaneseLanguagePortalApplication.class, args);

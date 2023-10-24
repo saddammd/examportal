@@ -6,7 +6,7 @@ public interface Reading_Service {
 
 	public Reading addReading(Reading reading);
 
-	public Reading findReading(Integer id);
+	public Reading findReadingByLessonId(Integer id);
 
 	public String deleteReading(Reading reading);
 

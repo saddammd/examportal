@@ -42,7 +42,7 @@ public class Video_Controller {
 	public ResponseEntity<String> addVideo(@RequestBody Add_Video_dto addvideo){
 		
 		Video video = new Video();
-		Lesson findLesson = lessonService.findLesson(addvideo.getLessonId());
+		Lesson findLesson = lessonService.findLesson(addvideo.getId());
 		if(findLesson!=null) {
 			video.setLesson(findLesson);
 			BeanUtils.copyProperties(addvideo, video);

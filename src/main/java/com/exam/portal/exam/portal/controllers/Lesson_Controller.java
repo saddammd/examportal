@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.portal.exam.portal.dto.Add_Lesson_dto;
+import com.exam.portal.exam.portal.dto.Edit_Lesson_dto;
 import com.exam.portal.exam.portal.dto.Lesson_Response_dto;
 import com.exam.portal.exam.portal.dto.Response_dto;
 import com.exam.portal.exam.portal.entities.Lesson;
@@ -38,12 +40,13 @@ public class Lesson_Controller {
 		return "test success";
 	}
 	
-	@PostMapping("/lesson")
-	public ResponseEntity<Lesson> saveLesson(@RequestBody Add_Lesson_dto addLesson) {
+	@PostMapping(value = "/lesson", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<String> saveLesson(@RequestBody Add_Lesson_dto addLesson) {
 
 		Lesson lesson = new Lesson();
 		BeanUtils.copyProperties(addLesson, lesson);
-		Lesson save = lesson_service.save(lesson);
+		lesson_service.save(lesson);
+		String save = "Data saved";
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(save);		
 	}
 	
@@ -70,10 +73,10 @@ public class Lesson_Controller {
 	
 	
 	@PutMapping("/lesson")
-	public ResponseEntity<Lesson> updateLesson(@RequestBody Add_Lesson_dto addLesson) {
+	public ResponseEntity<Lesson> updateLesson(@RequestBody Edit_Lesson_dto editLesson) {
 
 		Lesson lesson = new Lesson();
-		BeanUtils.copyProperties(addLesson, lesson);
+		BeanUtils.copyProperties(editLesson, lesson);
 		Lesson save = lesson_service.save(lesson);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(save);		
 	}

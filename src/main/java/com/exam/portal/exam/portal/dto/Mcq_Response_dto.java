@@ -1,6 +1,6 @@
 package com.exam.portal.exam.portal.dto;
 
-public class Add_Mcq_dto {
+public class Mcq_Response_dto {
 
 	private Integer lesson_id;
 	private Integer id;
@@ -11,7 +11,7 @@ public class Add_Mcq_dto {
 	private String option4;
 	private String answer;
 	
-	public Add_Mcq_dto() {
+	public Mcq_Response_dto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

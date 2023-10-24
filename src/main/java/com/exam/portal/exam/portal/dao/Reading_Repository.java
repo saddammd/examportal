@@ -6,6 +6,6 @@ import com.exam.portal.exam.portal.entities.Reading;
 
 public interface Reading_Repository extends JpaRepository<Reading, Integer> {
 
-	public Reading findReadingById(Integer id);
+	public Reading findReadingByLessonId(Integer id);
 
 }
